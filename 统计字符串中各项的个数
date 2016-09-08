@@ -1,0 +1,17 @@
+var str = "reewgqgeggesdgwergreyeqrqedsafdsfc";
+var obj = {};
+for(var i=0;i<str.length;i++){
+  var v = str.charAt(i);
+  if(obj[v] && obj[v].value == v){
+    obj[v].count = ++ obj[v].count;
+  }else{
+    obj[v] = {};
+    obj[v].count = 1;
+    obj[v].value = v;
+  }
+}
+
+for(var key in obj){
+  document.write(obj[key].value + "=" + obj[key].count + " ");
+  //r=4 e=8 w=2 g=6 q=3 s=3 d=3 y=1 a=1 f=2 c=1
+}
