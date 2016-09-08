@@ -1,0 +1,20 @@
+/* bug */ 
+var parseDate = Date.parse("2016-08-15 10:30:00");
+console.log(parseDate);
+// output "Invalid Date"
+
+
+var parseDate = Date.parse("2016/08/15 10:30:00");
+console.log(parseDate);
+// output "Invalid Date"
+
+
+
+/* bug修复 */
+var arr = "2016-08-15 10:30:00".split(/[- :]/),
+date = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4], arr[5]);
+
+console.log(date);
+// Mon Aug 15 2016 10:30:00 GMT+0800 (中国标准时间)
+
+
