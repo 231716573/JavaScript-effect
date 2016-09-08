@@ -1,0 +1,6 @@
+function removeAllChild(){
+  var amlist = document.getElementById("am-list");
+  while(amlist.hasChildNodes()){
+    amlist.removeChild(amlist.firstChild);
+  }
+}
