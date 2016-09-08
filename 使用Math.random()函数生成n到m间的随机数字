@@ -1,0 +1,29 @@
+Math.random()函数返回0和1之间的伪随机数，可能为0，但总是小于1，[0,1)
+
+第一种情况：
+  生成n-m，包含n但不包含m的整数：
+  第一步： w = m-n-2
+  第二步： Math.random()*w
+  第三步： Math.random()*w+n
+  第四步： parseInt(Math.random()*w+n, 10)
+
+第二种情况：
+  生成n-m，不包含n但包含m的整数：​
+  第一步： w = m-n-2
+  第二步： Math.random()*w
+  第三步： Math.random()*w+n
+  第四步： Math.floor(Math.random()*w+n) + 1
+
+第三种情况：
+  生成n-m，不包含n和m的整数：
+  第一步： w = m-n-2
+  第二步： Math.random()*w
+  第三步： Math.random()*w+n +1
+  第四步： Math.round(Math.random()*w+n+1) 或者 Math.ceil(Math.random()*w+n+1)
+
+第四种情况：
+  生成n-m，包含n和m的随机数：
+  第一步： w = m-n
+  第二步： Math.random()*w
+  第三步： Math.random()*w+n
+  第四步： Math.round(Math.random()*w+n) 或者 Math.ceil(Math.random()*w+n)
