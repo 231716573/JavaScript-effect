@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找颜色</title>
+<style type="text/css">
+*{margin: 0;padding: 0;}
+#wrap{height: 500px;width: 500px;background-color: #ccc;position: absolute;left: 50%;top: 50%;margin-left: -250px;margin-top: -250px;}
+#wrap ul li{float: left;list-style: none;}
+#fen{font-size: 70px;}
+</style>
+<script type="text/javascript">
+function rand(min,max){
+    return parseInt(Math.random()*(max-min)+min);
+}
+
+/*取得大方块的颜色跟小方块的颜色*/
+function randColor(){
+    var redColor = rand(0,255);
+    var greenColor = rand(0,255);
+    var blueColor = rand(0,255);
+
+    if(blueColor < 20){
+        var newBlueColor = blueColor+20;
+    }else{
+        var newBlueColor = blueColor-20;
+    }
+
+    return { red:redColor,green:greenColor,blue:blueColor,newBlue:newBlueColor};
+}
+
+window.onload = function (){
+
+    var oWrap = document.getElementById("wrap");
+    var oFen = document.getElementById("fen");
+
+    var index =2;
+    var fen =0;
+
+    function createLi(){
+        oWrap.innerHTML ="";
+        //随机获取颜色
+        var sRandColor = randColor();
+        //随机获取方块
+        var sTit = rand(0,index*index);
+
+        console.log("index："+index);
+
+        for(var i=0; i<index; i++){
+            var oUl = document.createElement("ul");
+            for(var j=0;j<index; j++){
+
+                var oLi = document.createElement("li");
+
+                oLi.style.backgroundColor = "rgb("+sRandColor.red+","+sRandColor.green+","+sRandColor.blue+")";
+                oLi.style.width = 500/index + "px";
+                oLi.style.height = 500/index + "px";
+
+                oUl.appendChild(oLi);
+            }
+            oWrap.appendChild(oUl);
+        }
+    
+    
+        var aLi = oWrap.getElementsByTagName('li');
+        aLi[sTit].style.backgroundColor = "rgb("+sRandColor.red+","+sRandColor.green+","+sRandColor.newBlue+")";
+
+        console.log("sTit："+sTit);
+
+        for(var i=0;i<aLi.length;i++){
+
+            (function (thisIndex){
+
+                aLi[i].onclick=function (){
+
+                    if(thisIndex == sTit){
+
+                        console.log("sTit："+sTit+"---thisIndex"+thisIndex);
+
+                        if(index < 10){
+                            index++;
+                        }
+                        fen++;
+                        oFen.innerHTML = fen;
+                        createLi();
+                    }else{
+                        alert("点错了！")
+                    }
+
+                }
+            })(i);
+
+        }
+    }
+
+    createLi();
+}
+</script>
+</head>
+<body>
+你的分数：
+<div id="fen">0</div>
+<div id="wrap"></div>
+
+</body>
+
+</html>
