@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script type="text/javascript">
+window.onload=function (){
+
+	var oQuan=document.getElementById("quan");//全选
+	var oFan=document.getElementById("fan");//反选
+	var oCh=document.getElementById("ch1");//标记全选
+
+	var aCh=document.getElementById("ul1").getElementsByTagName("input");
+
+	var bol=true;
+	oQuan.onclick=function (){
+		//有坑
+		if (bol){
+			oCh.checked=true;
+			for (var i = 0; i < aCh.length; i++) {
+				aCh[i].checked=true;
+			};
+			bol=false;
+		}
+		else{
+			oCh.checked=false;
+			for (var i = 0; i < aCh.length; i++) {
+				aCh[i].checked=false;
+			};
+			bol=true;
+		}
+	}
+	oFan.onclick=function (){
+
+		for (var i = 0; i < aCh.length; i++) {
+			if (aCh[i].checked){
+ 				aCh[i].checked=false;
+			}
+			else{
+				aCh[i].checked=true;
+			}
+		};
+		var allBol=true;
+
+		for (var i = 0; i < aCh.length; i++) {
+			if (aCh[i].checked!=true){
+				allBol=false;
+			}
+		};
+		if (allBol){
+			oCh.checked=true;
+		}
+		else{
+			oCh.checked=false;
+		}
+	}
+	for (var i = 0; i < aCh.length; i++) {
+		aCh[i].onclick=function (){
+
+			var allBol=true;
+
+			for (var i = 0; i < aCh.length; i++) {
+				if (aCh[i].checked!=true){
+					allBol=false;
+				}
+			};
+			if (allBol){
+				oCh.checked=true;
+			}
+			else{
+				oCh.checked=false;
+			}
+		}
+	};
+}
+</script>
+</head>
+<body>
+<input type="button" value="全选" id="quan">
+<input type="button" value="反选" id="fan">
+<input type="checkbox" id="ch1">
+<ul id="ul1">
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+<li><input type="checkbox"></li>
+</ul>
+</body>
+</html>
