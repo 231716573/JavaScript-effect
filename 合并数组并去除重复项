@@ -8,7 +8,7 @@ console.log(arr1); //[1, 6, 7, 8, 3, 4, 5, 6, 7]
 	
 // 去除重复项
 function remove(arr){
-	var tmp = {};
+	var tmp = new Array();
 	for(var i in arr){
 		if( tmp.indexOf(arr[i]) < 0 ){
 			tmp.push(arr[i]);
