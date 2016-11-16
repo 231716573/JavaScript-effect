@@ -23,10 +23,12 @@ cat.showName(); //Black Cat
 常见类数组有 arguments,NodeList!
 
 1、Array.prototype.push 也可以实现两个数组合并
+
 (function(){
   Array.prototype.push.call(arguments, 4);  
   console.log(arguments);//[1, 2, 3, 4]
 })(1,2,3)
+
 
 2、同样push方法没有提供push一个数组,但是它提供了push(param1,param,…paramN) 所以同样也可以通过apply来装换一下这个数组,即:
 var arr1=new Array("1","2","3"); 
@@ -35,10 +37,18 @@ Array.prototype.push.call(arr1,arr2);
 console.log(arr1); //["1", "2", "3", "4", "5", "6"]
 
 3、比如想求类数组中的最大值
+// 字符串传递形式
 (function (){
   var maxNum = Math.max.apply(null,arguments);
   console.log(maxNum); //56
 })(34,2,56);
+
+// 数组作为参数传递形式
+var arr = new Array(1,34,73,14,15,5,3,7,2,4);
+(function(a){
+	var maxNum = Math.max.apply(null,a);
+	console.log(maxNum)
+})(arr);
 
 
 三、判断类型
