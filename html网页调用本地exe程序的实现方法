@@ -2,7 +2,9 @@ http://www.voidcn.com/blog/mr_wanter/article/p-6232104.html
 
 首先打开注册表，方法win+r 进入运行，或者从开始里找运行输入regedit进入注册表。
 
-然后 在注册表 左边最上面HKEY_CLASSES_ROOT那个树右键新建——项。名字自己起就好了。然后再在自己建的这个节点上，右键，新建两个项，分别起名为DefaultIcon,shell，然后再在shell这个节点上右键，新建项open，再在open上新建项command，结构如下所示。
+然后 在注册表 左边最上面HKEY_CLASSES_ROOT那个树右键新建——项。名字自己起就好了。
+然后再在自己建的这个节点上，右键，新建两个项，分别起名为DefaultIcon,shell，
+然后再在shell这个节点上右键，新建项open，再在open上新建项command，结构如下所示。
 
 
 双击名称可以修改数据里面的内容，右键可以新建字符串值，上图第二个是我新建的
