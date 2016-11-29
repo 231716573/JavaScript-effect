@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+#div1{width:500px; margin:50px auto; height:25px;}
+#text1{ width:500px; height:25px;}
+#ul1{ width:500px; margin:50px auto; border:1px solid #e5e5e5;}
+#ul1 li.active{
+	background-color: #ccc;
+}
+#ul1 li:hover{
+	background-color: #ccc;
+}
+</style>
+<script type="text/javascript">
+var oS=null;
+function jsonp(url,jsonp,data,fnSucc){
+
+	var fnName="jsonp"+new Date().getTime();
+	window[fnName]=fnSucc;
+
+	data[jsonp]=fnName;
+
+	var arr=[];
+
+	for (var i in data){
+		//wd=x
+		var str=i+"="+data[i];
+		arr.push(str);
+	}
+
+	arr=arr.join("&");
+
+	url=url+"?"+arr;
+	
+	if (oS){
+		document.getElementsByTagName("head")[0].removeChild(oS);
+	}
+
+	oS=document.createElement("script");
+
+	oS.src=url;
+
+	document.getElementsByTagName("head")[0].appendChild(oS);
+
+}
+</script>
+<script type="text/javascript">
+window.onload=function (){
+
+	var oTxt=document.getElementById("text1");
+	var oUl=document.getElementById("ul1");
+
+	var index=-1;
+
+	oTxt.focus();
+
+	oTxt.onkeyup=function (ev){
+
+		var oEvent=ev||window.event;
+
+		switch(oEvent.keyCode){
+
+			case 37:
+				return;
+				break;
+			case 38:
+				return;
+				break;
+			case 39:
+				return;
+				break;
+			case 40:
+				return;
+				break;
+		}
+
+		jsonp("http://suggestion.baidu.com/su","cb",{
+			wd:oTxt.value
+		},function (json){
+			oUl.innerHTML="";
+
+			var arr=json.s;
+
+			index=-1;
+
+			for (var i=0; i<arr.length; i++){
+				var oLi=document.createElement("li");
+				oLi.innerHTML=arr[i];
+				oUl.appendChild(oLi);
+			}
+
+			var aLi=oUl.children;
+
+			for (var i=0; i<aLi.length; i++){
+
+				(function (index){
+
+					aLi[index].onclick=function (){
+
+						oTxt.value=aLi[index].innerHTML;
+						// var url="http://www.baidu.com/s?wd="+aLi[index].innerHTML;
+
+						// window.open(url,"_blank");
+					}
+				})(i);
+			}
+		});
+	}
+	oTxt.onkeydown=function (ev){
+
+		var oEvent=ev||window.event;
+
+		var aLi=oUl.children;
+		if (oEvent.keyCode==38){//上
+
+			index--;
+			if (index<0){
+				index=aLi.length-1;
+			}
+
+			for (var i=0; i<aLi.length; i++){
+
+				aLi[i].className="";
+			}
+			aLi[index].className="active";
+
+			oTxt.value=aLi[index].innerHTML;
+
+			return false;
+		}
+		if (oEvent.keyCode==40){//下
+
+			index++;
+			if (index>aLi.length-1){
+				index=0;
+			}
+
+			for (var i=0; i<aLi.length; i++){
+
+				aLi[i].className="";
+			}
+			aLi[index].className="active";
+
+			oTxt.value=aLi[index].innerHTML;
+			return false;
+		}
+	}
+}	
+</script>
+</head>
+<body>
+
+<div id="div1">
+	<input type="text" id="text1"/>
+</div>
+
+<ul id="ul1"></ul>
+</body>
+</html>
