@@ -1,3 +1,20 @@
+//添加绑定事件
+addHandler : function (oElement, sEventType, fnHandler){
+	return oElement.addEventListener ? oElement.addEventListener(sEventType, fnHandler, false) : oElement.attachEvent("on" + sEventType, fnHandler)
+},
+//删除绑定事件
+removeHandler : function (oElement, sEventType, fnHandler){
+	return oElement.removeEventListener ? oElement.removeEventListener(sEventType, fnHandler, false) : oElement.detachEvent("on" + sEventType, fnHandler)
+},
+//绑定事件到对象
+bind : function (object, fnHandler){
+	return function ()
+	{
+		return fnHandler.apply(object, arguments)	
+	}
+}
+
+
 // 获取class
 function getClass(sClass, oParent)
 {
