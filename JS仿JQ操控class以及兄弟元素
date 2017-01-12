@@ -13,7 +13,8 @@ bind : function (object, fnHandler){
 		return fnHandler.apply(object, arguments)	
 	}
 }
-
+//初始化样式
+this.initialize.apply(this, arguments);
 
 // 获取class
 function getClass(sClass, oParent)
