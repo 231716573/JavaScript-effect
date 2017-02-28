@@ -21,3 +21,4 @@ function accMul(arg1, arg2){
 }
 
 console.log(accMul(151.2,100)) // 15120
+ 
