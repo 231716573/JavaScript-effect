@@ -7,8 +7,8 @@ function accMul(arg1, arg2){
 		t;
     
 	t = s1.split(".");
-  判断有没有小数位，避免出错	
-  if(t[1]){
+  	// 判断有没有小数位，避免出错	
+  	if(t[1]){
 		m += t[1].length;
 	}
 
