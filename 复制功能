@@ -1,0 +1,15 @@
+<input class="fuzhi" type="button" value="复制" onclick="copy()">
+<input id="biao" type="text" value="kkxaowanzi">
+
+
+<script type="text/javascript">
+function copy(){
+	var Url2=document.getElementById("biao");
+	Url2.select(); // 选择对象
+	document.execCommand("Copy"); // 执行浏览器复制命令
+	alert("复制成功");
+}
+
+</script>
+
+注： // 不能隐藏input[type=text]框，无论是visibility跟display都不可以，需要把它偏移出视线
