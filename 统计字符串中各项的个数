@@ -3,7 +3,7 @@ var obj = {};
 for(var i=0;i<str.length;i++){
   var v = str.charAt(i);
   if(obj[v] && obj[v].value == v){
-    obj[v].count = ++ obj[v].count;
+    obj[v].count = ++ obj[v].count; // obj[v].count += 1;
   }else{
     obj[v] = {};
     obj[v].count = 1;
