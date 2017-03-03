@@ -1,0 +1,12 @@
+function max() {
+    var m=Number.NEGATIVE_INFINITY;
+    for (var i = 0; i < arguments.length; i++) {
+      if(arguments[i]>m){
+        m=arguments[i];
+      }
+    };
+    return m;
+
+  }
+ var largetst= max(1,3,4,595959,2342,234242,23423424242,22);
+ console.log(largetst);//23423424242
