@@ -6,30 +6,18 @@
 
 <script type="text/javascript">
 var arr1 = [1,2,3,4,5,6];
-var arr2 = [2,4,6,7,8,9,10];
+var arr2 = [2,4,6,8,10];
 
 var arr3 = new Array();
-var arr4 = new Array();
 
-for(var i=0;i<arr1.length;i++){
-  var flag = false;
-  for(var j=0;j<arr2.length;j++){
-    if(arr1[i] == arr2[j]){
-      flag = true;
+for(var i =0;i<arr1.length;i++){
+    for(var j = 0;j<arr2.length;j++){
+        if(arr1[i] == arr2[j] && arr1[i]%2 == 0){
+            arr3.push(arr1[i])        
+        }
     }
-  }
-  if(flag == true){
-    arr3.push(arr1[i]);
-  }
 }
-
-for(var n=0;n<arr3.length;n++){
-  if(arr3[n]%2 == 0){
-    arr4.push(arr3[n]);
-  }
-}
-
-alert(Math.max.apply(null,arr4));
+console.log(Math.max.apply(null, arr3))
 
 </script>
 </head>
