@@ -1,0 +1,81 @@
+地址：http://www.educity.cn/wenda/131924.html
+
+window.external.addFavorite 添加收藏夹的一些技巧
+<script type="text/javascript">
+function AddFavorite(sURL, sTitle)
+{
+    try
+    {
+        window.external.addFavorite(sURL, sTitle);
+    }
+    catch (e)
+    {
+        try
+        {
+            window.sidebar.addPanel(sTitle, sURL, "");
+        }
+        catch (e)
+        {
+            alert("加入收藏失败，有劳您手动添加。");
+        }
+    }
+}
+</script>
+<a JavaScript:window.external.AddFavorite('','Page')"> <font color="white">
+
+添加到收藏夹 </FONT> </a>
+
+是用来添加到收藏夹的
+
+关闭网页时弹出设为主页对话框代码：
+<BODY id=iehomepage
+onunload="iehomepage.style.behavior=’url(#default#homepage)’;if(!(iehomepage.isHomePage(’
+
+htto;//’)))iehomepage.setHomePage(’htto;//’);">
+
+打开网页弹出设为主页对话框代码：
+<BODY id=iehomepage
+onload="iehomepage.style.behavior=’url(#default#homepage)’;if(!(iehomepage.isHomePage(’
+
+htto;//’)))iehomepage.setHomePage(’htto;//’);">
+
+单击链接设为主页
+<a href=# onClick="this.style.behavior=’url(#default#homepage)’;this.setHomePage(’
+
+htto;//’);">设为主页</a>
+
+鼠标滑过设定为主页
+<a href=# onMouseOver="this.style.behavior=’url(#default#homepage)’;this.setHomePage(’
+
+htto;//’);">设为主页</a>
+
+附添加到收藏夹代码：
+
+离开网页时弹出
+<script language="javascript">
+function bookmarkit(){window.external.addFavorite(’htto;//’,'我的家')}</script>
+<body onunload="bookmarkit()">
+
+网页载入时弹出
+<script language="javascript">
+function bookmarkit(){window.external.addFavorite(’htto;//’,'我的家')}/
+</script>
+<body onload="bookmarkit()">
+
+右键弹出
+<script language=javascript1.2>
+document.all.onMouseDown=new Function("if (event.button==2||event.button==3)
+
+window.external.addFavorite(’htto;//’,'我的家')")/
+</script>
+
+单击文字弹出
+<script language="javascript">
+function bookmarkit(){window.external.addFavorite(’htto;//’,'我的家')}/
+if (document.all)document.write(’<a #" onClick="bookmarkit()">加入收藏夹</a>’)
+</script>
+
+鼠标滑过文字弹出
+<script language="javascript">
+function bookmarkit(){window.external.addFavorite(’htto;//’,'我的家')}/
+if (document.all)document.write(’<a #" onMouseOver="bookmarkit()">加入收藏夹</a>’)
