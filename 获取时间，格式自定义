@@ -27,5 +27,5 @@ function padLeftZero(str) {
 
 
 比如：
-  formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss')   2018-01-31 11:30
-  formatDate(new Date(), 'yyyy-MM-dd hh:mm')      2018-01-31 11:30:09
+  formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss')   2018-01-31 11:30:09
+  formatDate(new Date(), 'yyyy-MM-dd hh:mm')      2018-01-31 11:30
